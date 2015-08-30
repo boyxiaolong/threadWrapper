@@ -73,6 +73,11 @@ void threadWrapper::Consume(){
 }
 
 void threadWrapper::stop(){
+	if (m_IsStop)
+	{
+		return;
+	}
+	printf("thread %u is try to stop\n", m_ThreadID);
 	m_IsStop = true;
 	m_ConditionVar.notify_one();
 }
